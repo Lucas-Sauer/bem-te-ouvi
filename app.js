@@ -1,4 +1,4 @@
-// Dados de salvaguarda para testes locais
+// Lista inicial padrão (caso a API ou o navegador estejam limpos)
 const MOCK_INICIAL = [
   { id: 1, nome: "Bem-te-vi", bioma: "Mata Atlântica", data: "2026-11-05", nota: "Visto no topo da árvore." },
   { id: 2, nome: "Tucano-toco", bioma: "Amazônia", data: "2026-11-04", nota: "Vocalização ao entardecer." },
@@ -7,16 +7,36 @@ const MOCK_INICIAL = [
 
 let avesDados = [];
 
-// Operação HTTP GET: Carregar dados
+// Funções para manipular o LocalStorage
+function getAvesSalvas() {
+  return JSON.parse(localStorage.getItem('aves_customizadas') || '[]');
+}
+
+function salvarNovaAveLocal(novaAve) {
+  const salvas = getAvesSalvas();
+  salvas.unshift(novaAve); // Adiciona a nova no início da lista
+  localStorage.setItem('aves_customizadas', JSON.stringify(salvas));
+}
+
+function removerAveLocal(id) {
+  const salvas = getAvesSalvas().filter(ave => ave.id !== id);
+  localStorage.setItem('aves_customizadas', JSON.stringify(salvas));
+}
+
+// Operação HTTP GET + Leitura do LocalStorage
 async function carregarAves() {
+  let dadosBase = [];
   try {
     const response = await fetch('/api/aves');
     if (!response.ok) throw new Error('Falha na resposta da API');
-    avesDados = await response.json();
+    dadosBase = await response.json();
   } catch (error) {
-    console.warn('A utilizar dados locais para testes:', error);
-    avesDados = MOCK_INICIAL;
+    dadosBase = MOCK_INICIAL;
   }
+
+  // Combina os registos salvos no navegador com os registos da API
+  const salvas = getAvesSalvas();
+  avesDados = [...salvas, ...dadosBase];
   renderizarCards(avesDados);
 }
 
@@ -55,14 +75,17 @@ async function eliminarAve(id) {
     try {
       await fetch('/api/aves', { method: 'DELETE' });
     } catch (e) {
-      console.log('Simulação de eliminação em modo local');
+      console.log('Modo local');
     }
+    
+    // Remove do localStorage e da lista em memória
+    removerAveLocal(id);
     avesDados = avesDados.filter(ave => ave.id !== id);
     renderizarCards(avesDados);
   }
 }
 
-// Inicialização de escutadores de eventos
+// Eventos da página
 document.addEventListener('DOMContentLoaded', () => {
   carregarAves();
 
@@ -102,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!formValido) return;
 
       const novoRegisto = {
+        id: Date.now(), // Gera um ID único baseado no timestamp
         nome: document.getElementById('nome').value,
         bioma: document.getElementById('bioma').value,
         data: document.getElementById('data').value,
@@ -109,21 +133,21 @@ document.addEventListener('DOMContentLoaded', () => {
         nota: document.getElementById('nota').value
       };
 
+      // Tenta o POST na API Vercel e salva no localStorage
       try {
-        const res = await fetch('/api/aves', {
+        await fetch('/api/aves', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(novoRegisto)
         });
-        
-        if (res.ok) {
-          alert("Observação registada com sucesso!");
-          window.location.href = "index.html";
-        }
       } catch (error) {
-        alert("Observação registada com sucesso (Simulação)!");
-        window.location.href = "index.html";
+        console.log("Salvo apenas localmente");
       }
+
+      // Salva no navegador e redireciona
+      salvarNovaAveLocal(novoRegisto);
+      alert("Observação registada com sucesso!");
+      window.location.href = "index.html";
     });
   }
 });
