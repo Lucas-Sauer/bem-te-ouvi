@@ -1,98 +1,385 @@
+
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bem-te-ouvi - Novo Registo</title>
+
+  <meta
+    name="description"
+    content="Cadastre observações bioacústicas de aves, seus habitats e comportamentos no Bem-te-ouvi."
+  >
+
+  <meta name="theme-color" content="#064e3b">
+
+  <title>Bem-te-ouvi | Novo Registro</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="bg-stone-50 text-stone-900 min-h-screen flex flex-col font-sans">
 
-  <!-- Componente Reutilizável 1: Header / TopNavBar -->
+  <!-- CABEÇALHO E NAVEGAÇÃO -->
+
   <header class="bg-emerald-900 text-white shadow-md">
-    <nav class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center" aria-label="Navegação Principal">
-      <h1 class="text-2xl font-bold tracking-wide flex items-center gap-2">
-        <span>🐦</span> Bem-te-ouvi
-      </h1>
-      <ul class="flex space-x-6 font-medium mt-2 sm:mt-0">
-        <li><a href="index.html" class="hover:text-emerald-200 transition-colors">Explorar</a></li>
-        <li><a href="cadastro.html" class="text-emerald-200 border-b-2 border-emerald-400 pb-1" aria-current="page">Novo Registo</a></li>
-        <li><a href="detalhes.html" class="hover:text-emerald-200 transition-colors">Detalhes</a></li>
+
+    <nav
+      class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4"
+      aria-label="Navegação principal"
+    >
+
+      <a
+        href="index.html"
+        class="text-2xl font-bold tracking-wide flex items-center gap-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        aria-label="Bem-te-ouvi - Página inicial"
+      >
+        <span aria-hidden="true">🐦</span>
+        <span>Bem-te-ouvi</span>
+      </a>
+
+      <ul class="flex flex-wrap justify-center gap-4 sm:gap-6 font-medium">
+
+        <li>
+          <a
+            href="index.html"
+            class="hover:text-emerald-200 transition-colors rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          >
+            Explorar
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="cadastro.html"
+            class="text-emerald-200 border-b-2 border-emerald-400 pb-1 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            aria-current="page"
+          >
+            Novo Registo
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="detalhes.html"
+            class="hover:text-emerald-200 transition-colors rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          >
+            Detalhes
+          </a>
+        </li>
+
       </ul>
+
     </nav>
+
   </header>
 
-  <!-- Conteúdo Principal -->
+
+  <!-- CONTEÚDO PRINCIPAL -->
+
   <main class="max-w-3xl mx-auto px-4 py-8 flex-1 w-full">
-    <section class="bg-white p-6 sm:p-8 rounded-xl shadow-sm border border-stone-200">
-      <h2 class="text-2xl font-bold mb-6 text-emerald-950">Registar Nova Observação Bioacústica</h2>
 
-      <!-- Form com 5 campos e Validação de Erros -->
-      <form id="form-cadastro" novalidate class="space-y-5">
-        
-        <!-- Campo 1: Nome da Ave -->
+    <section
+      class="bg-white p-6 sm:p-8 rounded-xl shadow-sm border border-stone-200"
+      aria-labelledby="titulo-cadastro"
+    >
+
+      <h1
+        id="titulo-cadastro"
+        class="text-2xl font-bold mb-3 text-emerald-950"
+      >
+        Registar Nova Observação Bioacústica
+      </h1>
+
+      <p class="text-sm text-stone-600 mb-6">
+        Preencha as informações abaixo para registrar uma nova
+        observação de ave.
+      </p>
+
+      <p class="text-xs text-stone-500 mb-6">
+        Os campos marcados com
+        <span class="text-red-600 font-bold">*</span>
+        são obrigatórios.
+      </p>
+
+
+      <!-- FORMULÁRIO DE CADASTRO -->
+
+      <form
+        id="form-cadastro"
+        novalidate
+        class="space-y-6"
+        aria-describedby="orientacao-formulario"
+      >
+
+        <p id="orientacao-formulario" class="sr-only">
+          Todos os campos são obrigatórios. Os erros de preenchimento
+          serão apresentados abaixo de cada campo.
+        </p>
+
+
+        <!-- CAMPO 1: NOME DA AVE -->
+
         <div>
-          <label for="nome" class="block text-sm font-semibold text-stone-700 mb-1">1. Nome Popular ou Científico *</label>
-          <input type="text" id="nome" name="nome" placeholder="Ex: Sabiá-laranja (Turdus rufiventris)"
-                 class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none">
-          <p id="erro-nome" class="text-red-600 text-xs mt-1 hidden" role="alert">O nome da ave é obrigatório.</p>
+
+          <label
+            for="nome"
+            class="block text-sm font-semibold text-stone-700 mb-1"
+          >
+            1. Nome Popular ou Científico
+            <span class="text-red-600" aria-hidden="true">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Ex: Sabiá-laranja (Turdus rufiventris)"
+            maxlength="100"
+            minlength="2"
+            required
+            autocomplete="off"
+            aria-required="true"
+            aria-invalid="false"
+            aria-describedby="ajuda-nome erro-nome"
+            class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600"
+          >
+
+          <p
+            id="ajuda-nome"
+            class="text-xs text-stone-500 mt-1"
+          >
+            Informe o nome popular ou científico da espécie.
+          </p>
+
+          <p
+            id="erro-nome"
+            class="text-red-600 text-xs mt-1 hidden"
+            role="alert"
+          >
+            O nome da ave é obrigatório.
+          </p>
+
         </div>
 
-        <!-- Campo 2: Bioma -->
+
+        <!-- CAMPO 2: BIOMA -->
+
         <div>
-          <label for="bioma" class="block text-sm font-semibold text-stone-700 mb-1">2. Bioma / Habitat *</label>
-          <select id="bioma" name="bioma" class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none bg-white">
+
+          <label
+            for="bioma"
+            class="block text-sm font-semibold text-stone-700 mb-1"
+          >
+            2. Bioma / Habitat
+            <span class="text-red-600" aria-hidden="true">*</span>
+          </label>
+
+          <select
+            id="bioma"
+            name="bioma"
+            required
+            aria-required="true"
+            aria-invalid="false"
+            aria-describedby="erro-bioma"
+            class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 bg-white"
+          >
+
             <option value="">Selecione um bioma...</option>
+
             <option value="Mata Atlântica">Mata Atlântica</option>
+
             <option value="Amazônia">Amazônia</option>
+
             <option value="Cerrado">Cerrado</option>
+
             <option value="Caatinga">Caatinga</option>
+
             <option value="Pantanal">Pantanal</option>
+
             <option value="Pampa">Pampa</option>
+
           </select>
-          <p id="erro-bioma" class="text-red-600 text-xs mt-1 hidden" role="alert">Por favor, selecione um bioma.</p>
+
+          <p
+            id="erro-bioma"
+            class="text-red-600 text-xs mt-1 hidden"
+            role="alert"
+          >
+            Por favor, selecione um bioma.
+          </p>
+
         </div>
 
-        <!-- Campo 3: Data da Observação -->
+
+        <!-- CAMPO 3: DATA -->
+
         <div>
-          <label for="data" class="block text-sm font-semibold text-stone-700 mb-1">3. Data da Observação *</label>
-          <input type="date" id="data" name="data"
-                 class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none">
-          <p id="erro-data" class="text-red-600 text-xs mt-1 hidden" role="alert">A data da observação é obrigatória.</p>
+
+          <label
+            for="data"
+            class="block text-sm font-semibold text-stone-700 mb-1"
+          >
+            3. Data da Observação
+            <span class="text-red-600" aria-hidden="true">*</span>
+          </label>
+
+          <input
+            type="date"
+            id="data"
+            name="data"
+            required
+            aria-required="true"
+            aria-invalid="false"
+            aria-describedby="erro-data"
+            class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600"
+          >
+
+          <p
+            id="erro-data"
+            class="text-red-600 text-xs mt-1 hidden"
+            role="alert"
+          >
+            A data da observação é obrigatória.
+          </p>
+
         </div>
 
-        <!-- Campo 4: Município / Localidade -->
+
+        <!-- CAMPO 4: LOCALIDADE -->
+
         <div>
-          <label for="local" class="block text-sm font-semibold text-stone-700 mb-1">4. Município / Localidade *</label>
-          <input type="text" id="local" name="local" placeholder="Ex: Panambi - RS"
-                 class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none">
-          <p id="erro-local" class="text-red-600 text-xs mt-1 hidden" role="alert">O local é obrigatório.</p>
+
+          <label
+            for="local"
+            class="block text-sm font-semibold text-stone-700 mb-1"
+          >
+            4. Município / Localidade
+            <span class="text-red-600" aria-hidden="true">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="local"
+            name="local"
+            placeholder="Ex: Panambi - RS"
+            minlength="2"
+            maxlength="120"
+            required
+            autocomplete="address-level2"
+            aria-required="true"
+            aria-invalid="false"
+            aria-describedby="erro-local"
+            class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600"
+          >
+
+          <p
+            id="erro-local"
+            class="text-red-600 text-xs mt-1 hidden"
+            role="alert"
+          >
+            O local é obrigatório.
+          </p>
+
         </div>
 
-        <!-- Campo 5: Notas de Campo -->
+
+        <!-- CAMPO 5: NOTAS DE CAMPO -->
+
         <div>
-          <label for="nota" class="block text-sm font-semibold text-stone-700 mb-1">5. Notas de Campo e Comportamento *</label>
-          <textarea id="nota" name="nota" rows="3" placeholder="Descreva o som emitido, comportamento ou condições ecológicas..."
-                    class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none"></textarea>
-          <p id="erro-nota" class="text-red-600 text-xs mt-1 hidden" role="alert">As notas de campo são obrigatórias.</p>
+
+          <label
+            for="nota"
+            class="block text-sm font-semibold text-stone-700 mb-1"
+          >
+            5. Notas de Campo e Comportamento
+            <span class="text-red-600" aria-hidden="true">*</span>
+          </label>
+
+          <textarea
+            id="nota"
+            name="nota"
+            rows="4"
+            minlength="5"
+            maxlength="1000"
+            placeholder="Descreva o som emitido, comportamento ou condições ecológicas..."
+            required
+            aria-required="true"
+            aria-invalid="false"
+            aria-describedby="ajuda-nota erro-nota"
+            class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 resize-y"
+          ></textarea>
+
+          <p
+            id="ajuda-nota"
+            class="text-xs text-stone-500 mt-1"
+          >
+            Descreva características da vocalização e do comportamento observado.
+          </p>
+
+          <p
+            id="erro-nota"
+            class="text-red-600 text-xs mt-1 hidden"
+            role="alert"
+          >
+            As notas de campo são obrigatórias.
+          </p>
+
         </div>
 
-        <!-- Botões de Ação -->
-        <div class="flex justify-end space-x-4 pt-4 border-t border-stone-200">
-          <a href="index.html" class="px-5 py-2 border border-stone-300 rounded-lg text-stone-700 hover:bg-stone-100 font-semibold transition-colors">Cancelar</a>
-          <button type="submit" class="px-5 py-2 bg-emerald-800 text-white rounded-lg hover:bg-emerald-900 font-semibold transition-colors shadow-sm">
+
+        <!-- BOTÕES -->
+
+        <div class="flex flex-col-reverse sm:flex-row justify-end gap-3 pt-5 border-t border-stone-200">
+
+          <a
+            href="index.html"
+            class="px-5 py-3 border border-stone-300 rounded-lg text-stone-700 hover:bg-stone-100 font-semibold transition-colors text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600"
+          >
+            Cancelar
+          </a>
+
+          <button
+            type="submit"
+            class="px-5 py-3 bg-emerald-800 text-white rounded-lg hover:bg-emerald-900 font-semibold transition-colors shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2"
+          >
             Guardar Registo
           </button>
+
         </div>
+
       </form>
+
     </section>
+
   </main>
 
-  <footer class="bg-stone-800 text-stone-300 py-4 text-center text-sm mt-auto">
-    <p>&copy; 2026 Bem-te-ouvi — Bioacústica e Ornitologia</p>
+
+  <!-- RODAPÉ -->
+
+  <footer class="bg-stone-800 text-stone-300 py-5 text-center text-sm mt-auto">
+
+    <div class="max-w-6xl mx-auto px-4">
+
+      <p>
+        &copy; 2026 Bem-te-ouvi — Bioacústica e Ornitologia
+      </p>
+
+      <p class="text-stone-400 text-xs mt-1">
+        Explorando e valorizando a biodiversidade brasileira.
+      </p>
+
+    </div>
+
   </footer>
 
-  <script src="app.js"></script>
+
+  <!-- JAVASCRIPT -->
+
+  <script src="app.js" defer></script>
+
 </body>
+
 </html>
