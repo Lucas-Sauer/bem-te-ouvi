@@ -1,51 +1,156 @@
+
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bem-te-ouvi - Detalhes da Vocalização</title>
+
+  <meta
+    name="description"
+    content="Conheça informações sobre o Bem-te-vi, suas características, habitat e vocalizações."
+  >
+
+  <meta name="theme-color" content="#064e3b">
+
+  <title>Bem-te-ouvi | Detalhes da Vocalização</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="bg-stone-50 text-stone-900 min-h-screen flex flex-col font-sans">
 
-  <!-- Componente Reutilizável 1: Header / TopNavBar -->
+  <!-- CABEÇALHO E NAVEGAÇÃO -->
+
   <header class="bg-emerald-900 text-white shadow-md">
-    <nav class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center" aria-label="Navegação Principal">
-      <h1 class="text-2xl font-bold tracking-wide flex items-center gap-2">
-        <span>🐦</span> Bem-te-ouvi
-      </h1>
-      <ul class="flex space-x-6 font-medium mt-2 sm:mt-0">
-        <li><a href="index.html" class="hover:text-emerald-200 transition-colors">Explorar</a></li>
-        <li><a href="cadastro.html" class="hover:text-emerald-200 transition-colors">Novo Registo</a></li>
-        <li><a href="detalhes.html" class="text-emerald-200 border-b-2 border-emerald-400 pb-1" aria-current="page">Detalhes</a></li>
+
+    <nav
+      class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4"
+      aria-label="Navegação principal"
+    >
+
+      <a
+        href="index.html"
+        class="text-2xl font-bold tracking-wide flex items-center gap-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        aria-label="Bem-te-ouvi - Página inicial"
+      >
+        <span aria-hidden="true">🐦</span>
+        <span>Bem-te-ouvi</span>
+      </a>
+
+      <ul class="flex flex-wrap justify-center gap-4 sm:gap-6 font-medium">
+
+        <li>
+          <a
+            href="index.html"
+            class="hover:text-emerald-200 transition-colors rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          >
+            Explorar
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="cadastro.html"
+            class="hover:text-emerald-200 transition-colors rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          >
+            Novo Registo
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="detalhes.html"
+            class="text-emerald-200 border-b-2 border-emerald-400 pb-1 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            aria-current="page"
+          >
+            Detalhes
+          </a>
+        </li>
+
       </ul>
+
     </nav>
+
   </header>
 
-  <!-- Conteúdo Principal -->
+
+  <!-- CONTEÚDO PRINCIPAL -->
+
   <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full">
-    <article class="bg-white p-6 sm:p-8 rounded-xl shadow-sm border border-stone-200 space-y-6">
-      
-      <div class="flex flex-wrap justify-between items-start border-b border-stone-200 pb-4 gap-4">
+
+    <article
+      class="bg-white p-6 sm:p-8 rounded-xl shadow-sm border border-stone-200 space-y-6"
+      aria-labelledby="titulo-especie"
+    >
+
+      <!-- IDENTIFICAÇÃO DA ESPÉCIE -->
+
+      <header class="flex flex-col sm:flex-row justify-between items-start border-b border-stone-200 pb-4 gap-4">
+
         <div>
-          <span class="text-xs font-semibold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">Espécie em Destaque</span>
-          <h2 class="text-3xl font-bold text-emerald-950 mt-2">Bem-te-vi <span class="text-lg italic font-normal text-stone-500">(Pitangus sulphuratus)</span></h2>
+
+          <span class="text-xs font-semibold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full">
+            Espécie em Destaque
+          </span>
+
+          <h1
+            id="titulo-especie"
+            class="text-3xl font-bold text-emerald-950 mt-3"
+          >
+            Bem-te-vi
+          </h1>
+
+          <p class="text-lg italic font-normal text-stone-500 mt-1">
+            Pitangus sulphuratus
+          </p>
+
         </div>
-        <a href="index.html" class="text-sm text-emerald-800 hover:text-emerald-950 font-semibold flex items-center gap-1">
-          ← Voltar à exploração
+
+        <a
+          href="index.html"
+          class="text-sm text-emerald-800 hover:text-emerald-950 font-semibold flex items-center gap-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600"
+        >
+          <span aria-hidden="true">←</span>
+          Voltar à exploração
         </a>
-      </div>
 
-      <!-- Componente Reutilizável: Player Bioacústico -->
-      <section class="bg-stone-900 text-white p-6 rounded-xl space-y-4" aria-label="Player Bioacústico">
-        <div class="flex justify-between items-center text-xs text-stone-400">
-          <span>Amostra Bioacústica #001</span>
-          <span>Taxa de Confiança da IA: 98.4%</span>
+      </header>
+
+
+      <!-- PLAYER BIOACÚSTICO -->
+
+      <section
+        class="bg-stone-900 text-white p-5 sm:p-6 rounded-xl space-y-4"
+        aria-labelledby="titulo-player"
+      >
+
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+
+          <h2
+            id="titulo-player"
+            class="text-sm font-semibold"
+          >
+            Amostra Bioacústica #001
+          </h2>
+
+          <span class="text-xs text-stone-400">
+            Demonstração visual
+          </span>
+
         </div>
 
-        <!-- Visualização Simulada do Espectrograma de Frequência -->
-        <div class="h-20 bg-stone-800 rounded-lg flex items-center justify-center gap-1 px-4 overflow-hidden" aria-label="Gráfico de Onda Sonora">
+
+        <!-- REPRESENTAÇÃO VISUAL DA ONDA -->
+
+        <div
+          class="h-24 bg-stone-800 rounded-lg flex items-center justify-center gap-1 px-4 overflow-hidden"
+          role="img"
+          aria-label="Representação ilustrativa de uma onda sonora."
+        >
+
           <div class="w-1.5 h-6 bg-emerald-500 rounded-full animate-pulse"></div>
           <div class="w-1.5 h-12 bg-emerald-400 rounded-full"></div>
           <div class="w-1.5 h-16 bg-emerald-500 rounded-full"></div>
@@ -56,51 +161,185 @@
           <div class="w-1.5 h-6 bg-emerald-400 rounded-full"></div>
           <div class="w-1.5 h-12 bg-emerald-500 rounded-full"></div>
           <div class="w-1.5 h-4 bg-emerald-400 rounded-full"></div>
+          <div class="w-1.5 h-14 bg-emerald-500 rounded-full"></div>
+          <div class="w-1.5 h-8 bg-emerald-400 rounded-full"></div>
+
         </div>
 
-        <div class="flex items-center justify-between">
-          <button type="button" onclick="alert('A reproduzir áudio bioacústico...')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-4 py-2 rounded-lg text-sm transition-colors flex items-center gap-2">
-            ▶ Reproduzir Áudio
+
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+
+          <button
+            type="button"
+            id="botao-audio"
+            class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-4 py-3 rounded-lg text-sm transition-colors flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            aria-describedby="aviso-audio"
+          >
+            <span aria-hidden="true">▶</span>
+            Reproduzir Áudio
           </button>
-          <span class="text-xs text-stone-400">Frequência: 2.4 kHz - 4.1 kHz</span>
+
+          <span class="text-xs text-stone-400">
+            Áudio demonstrativo não disponível
+          </span>
+
         </div>
+
+        <p
+          id="aviso-audio"
+          class="text-xs text-stone-400"
+          aria-live="polite"
+        >
+          Esta página ainda não possui um arquivo de áudio para reprodução.
+        </p>
+
       </section>
 
-      <!-- Ficha Técnica de Campo -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-        <div class="p-4 bg-stone-50 rounded-lg border border-stone-200">
-          <h3 class="text-xs font-semibold text-stone-500 uppercase">Bioma & Habitat</h3>
-          <p class="text-base font-semibold text-stone-800 mt-1">Mata Atlântica / Áreas Urbanas</p>
-        </div>
-        <div class="p-4 bg-stone-50 rounded-lg border border-stone-200">
-          <h3 class="text-xs font-semibold text-stone-500 uppercase">Tipo de Vocalização</h3>
-          <p class="text-base font-semibold text-stone-800 mt-1">Canto Territorial / Chamado</p>
-        </div>
-        <div class="p-4 bg-stone-50 rounded-lg border border-stone-200">
-          <h3 class="text-xs font-semibold text-stone-500 uppercase">Grau de Ameaça (IUCN)</h3>
-          <p class="text-base font-semibold text-emerald-700 mt-1">Pouco Preocupante (LC)</p>
-        </div>
-        <div class="p-4 bg-stone-50 rounded-lg border border-stone-200">
-          <h3 class="text-xs font-semibold text-stone-500 uppercase">Data de Registo</h3>
-          <p class="text-base font-semibold text-stone-800 mt-1">05/11/2026</p>
-        </div>
-      </div>
 
-      <!-- Observações Ecológicas -->
-      <div class="border-t border-stone-200 pt-4">
-        <h3 class="text-sm font-bold text-stone-700 mb-2">Notas Ecológicas e de Campo</h3>
+      <!-- INFORMAÇÕES DA ESPÉCIE -->
+
+      <section aria-labelledby="titulo-informacoes">
+
+        <h2
+          id="titulo-informacoes"
+          class="text-lg font-bold text-emerald-950 mb-4"
+        >
+          Informações da Espécie
+        </h2>
+
+        <dl class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+          <div class="p-4 bg-stone-50 rounded-lg border border-stone-200">
+
+            <dt class="text-xs font-semibold text-stone-500 uppercase">
+              Bioma e Habitat
+            </dt>
+
+            <dd class="text-base font-semibold text-stone-800 mt-1">
+              Mata Atlântica / Áreas Urbanas
+            </dd>
+
+          </div>
+
+
+          <div class="p-4 bg-stone-50 rounded-lg border border-stone-200">
+
+            <dt class="text-xs font-semibold text-stone-500 uppercase">
+              Tipo de Vocalização
+            </dt>
+
+            <dd class="text-base font-semibold text-stone-800 mt-1">
+              Canto Territorial / Chamado
+            </dd>
+
+          </div>
+
+
+          <div class="p-4 bg-stone-50 rounded-lg border border-stone-200">
+
+            <dt class="text-xs font-semibold text-stone-500 uppercase">
+              Grau de Ameaça (IUCN)
+            </dt>
+
+            <dd class="text-base font-semibold text-emerald-700 mt-1">
+              Pouco Preocupante (LC)
+            </dd>
+
+          </div>
+
+
+          <div class="p-4 bg-stone-50 rounded-lg border border-stone-200">
+
+            <dt class="text-xs font-semibold text-stone-500 uppercase">
+              Data de Registro
+            </dt>
+
+            <dd class="text-base font-semibold text-stone-800 mt-1">
+              05/11/2026
+            </dd>
+
+          </div>
+
+        </dl>
+
+      </section>
+
+
+      <!-- OBSERVAÇÕES ECOLÓGICAS -->
+
+      <section
+        class="border-t border-stone-200 pt-5"
+        aria-labelledby="titulo-observacoes"
+      >
+
+        <h2
+          id="titulo-observacoes"
+          class="text-lg font-bold text-stone-800 mb-3"
+        >
+          Notas Ecológicas e de Campo
+        </h2>
+
         <p class="text-sm text-stone-600 leading-relaxed">
-          Indivíduo registado a emitir chamados territoriais no topo de um ipê-amarelo ao entardecer. Apresentava comportamento ativo e resposta bioacústica a cantos conspecíficos.
+          Indivíduo registrado emitindo chamados territoriais no topo
+          de um ipê-amarelo ao entardecer. Apresentava comportamento
+          ativo e resposta bioacústica a cantos de outros indivíduos
+          da mesma espécie.
         </p>
-      </div>
+
+      </section>
+
+
+      <!-- AVISO SOBRE DADOS DEMONSTRATIVOS -->
+
+      <aside class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+
+        <h2 class="text-sm font-semibold text-amber-900 mb-1">
+          Sobre estas informações
+        </h2>
+
+        <p class="text-xs text-amber-800 leading-relaxed">
+          Esta ficha contém informações demonstrativas para fins
+          acadêmicos. A representação da onda sonora não corresponde
+          a uma gravação ou medição real.
+        </p>
+
+      </aside>
 
     </article>
+
   </main>
 
-  <footer class="bg-stone-800 text-stone-300 py-4 text-center text-sm mt-auto">
-    <p>&copy; 2026 Bem-te-ouvi — Bioacústica e Ornitologia</p>
+
+  <!-- RODAPÉ -->
+
+  <footer class="bg-stone-800 text-stone-300 py-5 text-center text-sm mt-auto">
+
+    <div class="max-w-6xl mx-auto px-4">
+
+      <p>
+        &copy; 2026 Bem-te-ouvi — Bioacústica e Ornitologia
+      </p>
+
+      <p class="text-stone-400 text-xs mt-1">
+        Explorando e valorizando a biodiversidade brasileira.
+      </p>
+
+    </div>
+
   </footer>
 
-  <script src="app.js"></script>
+
+  <!-- INTERAÇÃO DO PLAYER -->
+
+  <script>
+    const botaoAudio = document.getElementById('botao-audio');
+    const avisoAudio = document.getElementById('aviso-audio');
+
+    botaoAudio.addEventListener('click', () => {
+      avisoAudio.textContent =
+        'Não existe uma gravação de áudio disponível nesta demonstração.';
+    });
+  </script>
+
 </body>
 </html>
