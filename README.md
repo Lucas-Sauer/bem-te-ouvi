@@ -62,6 +62,7 @@ Implementação de requisições assíncronas utilizando a API Fetch, cobrindo a
 
 - **Lucas Sauer**
 - **Mateus**
+- **joao schraiber**
 
 ---
 
