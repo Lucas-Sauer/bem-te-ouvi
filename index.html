@@ -1,56 +1,211 @@
+
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bem-te-ouvi - Explorar</title>
+
+  <meta
+    name="description"
+    content="Explore registros de aves, vocalizações e observações de diferentes biomas brasileiros no Bem-te-ouvi."
+  >
+
+  <meta name="theme-color" content="#064e3b">
+
+  <title>Bem-te-ouvi | Explorar espécies</title>
+
   <script src="https://cdn.tailwindcss.com"></script>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="bg-stone-50 text-stone-900 min-h-screen flex flex-col font-sans">
 
-  <!-- Componente Reutilizável 1: Header / TopNavBar -->
+  <!-- CABEÇALHO E NAVEGAÇÃO -->
+
   <header class="bg-emerald-900 text-white shadow-md">
-    <nav class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center" aria-label="Navegação Principal">
-      <h1 class="text-2xl font-bold tracking-wide flex items-center gap-2">
-        <span>🐦</span> Bem-te-ouvi
-      </h1>
-      <ul class="flex space-x-6 font-medium mt-2 sm:mt-0">
-        <li><a href="index.html" class="text-emerald-200 border-b-2 border-emerald-400 pb-1" aria-current="page">Explorar</a></li>
-        <li><a href="cadastro.html" class="hover:text-emerald-200 transition-colors">Novo Registo</a></li>
-        <li><a href="detalhes.html" class="hover:text-emerald-200 transition-colors">Detalhes</a></li>
+
+    <nav
+      class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4"
+      aria-label="Navegação principal"
+    >
+
+      <a
+        href="index.html"
+        class="text-2xl font-bold tracking-wide flex items-center gap-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        aria-label="Bem-te-ouvi - Página inicial"
+      >
+        <span aria-hidden="true">🐦</span>
+        <span>Bem-te-ouvi</span>
+      </a>
+
+      <ul class="flex flex-wrap justify-center gap-4 sm:gap-6 font-medium">
+
+        <li>
+          <a
+            href="index.html"
+            class="text-emerald-200 border-b-2 border-emerald-400 pb-1 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            aria-current="page"
+          >
+            Explorar
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="cadastro.html"
+            class="hover:text-emerald-200 transition-colors rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          >
+            Novo Registo
+          </a>
+        </li>
+
+        <li>
+          <a
+            href="detalhes.html"
+            class="hover:text-emerald-200 transition-colors rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          >
+            Detalhes
+          </a>
+        </li>
+
       </ul>
+
     </nav>
+
   </header>
 
-  <!-- Conteúdo Principal -->
+
+  <!-- CONTEÚDO PRINCIPAL -->
+
   <main class="max-w-6xl mx-auto px-4 py-8 flex-1 w-full">
-    <section class="mb-8 bg-white p-6 rounded-xl shadow-sm border border-stone-200">
-      <h2 class="text-xl font-bold mb-4 text-emerald-950">Explorar Vocalizações e Espécies</h2>
-      
-      <!-- Interação 1: Campo de Busca e Filtro em Tempo Real -->
+
+    <section
+      class="mb-8 bg-white p-6 rounded-xl shadow-sm border border-stone-200"
+      aria-labelledby="titulo-explorar"
+    >
+
+      <h1
+        id="titulo-explorar"
+        class="text-xl font-bold mb-4 text-emerald-950"
+      >
+        Explorar Vocalizações e Espécies
+      </h1>
+
+      <p class="text-stone-600 text-sm mb-5">
+        Descubra espécies, conheça seus habitats e explore registros
+        de vocalizações da biodiversidade brasileira.
+      </p>
+
+
+      <!-- PESQUISA E FILTRO -->
+
       <div class="flex flex-col sm:flex-row gap-4">
+
         <div class="flex-1">
-          <label for="search-input" class="block text-sm font-semibold mb-1">Pesquisar por nome ou bioma:</label>
-          <input type="text" id="search-input" placeholder="Ex: Bem-te-vi, Amazônia..." 
-                 class="w-full px-4 py-2 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none">
+
+          <label
+            for="search-input"
+            class="block text-sm font-semibold mb-1"
+          >
+            Pesquisar por nome ou bioma:
+          </label>
+
+          <input
+            type="search"
+            id="search-input"
+            name="pesquisa"
+            placeholder="Ex: Bem-te-vi, Amazônia..."
+            autocomplete="off"
+            aria-describedby="search-help"
+            class="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600"
+          >
+
+          <p
+            id="search-help"
+            class="text-xs text-stone-500 mt-2"
+          >
+            Digite o nome de uma espécie ou de um bioma para filtrar os registros.
+          </p>
+
         </div>
+
       </div>
+
     </section>
 
-    <!-- Contentor para o Componente Reutilizável 2 (Cards de Aves) -->
+
+    <!-- LISTAGEM DE AVES -->
+
     <section aria-labelledby="lista-aves-titulo">
-      <h2 id="lista-aves-titulo" class="sr-only">Lista de Registos de Aves</h2>
-      <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Inserido dinamicamente pelo app.js -->
+
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-5 gap-2">
+
+        <h2
+          id="lista-aves-titulo"
+          class="text-lg font-bold text-emerald-950"
+        >
+          Registros de aves
+        </h2>
+
+        <p
+          id="contador-registros"
+          class="text-sm text-stone-500"
+          aria-live="polite"
+        >
+        </p>
+
       </div>
+
+
+      <!--
+        Os cards são gerados dinamicamente pelo app.js.
+        O aria-live informa alterações da listagem aos leitores de tela.
+      -->
+
+      <div
+        id="cards-container"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        aria-live="polite"
+        aria-busy="true"
+        aria-label="Registros de aves"
+      >
+
+        <p class="col-span-full text-center text-stone-500 py-8">
+          Carregando registros...
+        </p>
+
+      </div>
+
     </section>
+
   </main>
 
-  <footer class="bg-stone-800 text-stone-300 py-4 text-center text-sm mt-auto">
-    <p>&copy; 2026 Bem-te-ouvi — Bioacústica e Ornitologia</p>
+
+  <!-- RODAPÉ -->
+
+  <footer class="bg-stone-800 text-stone-300 py-5 text-center text-sm mt-auto">
+
+    <div class="max-w-6xl mx-auto px-4">
+
+      <p>
+        &copy; 2026 Bem-te-ouvi — Bioacústica e Ornitologia
+      </p>
+
+      <p class="text-stone-400 text-xs mt-1">
+        Explorando e valorizando a biodiversidade brasileira.
+      </p>
+
+    </div>
+
   </footer>
 
-  <script src="app.js"></script>
+
+  <!-- JAVASCRIPT -->
+
+  <script src="app.js" defer></script>
+
 </body>
+
 </html>
